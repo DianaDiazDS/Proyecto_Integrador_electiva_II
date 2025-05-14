@@ -1,0 +1,486 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: url(https://www.produplant.tuboyaca.com/fonts/fontawesome-webfont.woff2?v=4.6.3);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 15px;
+  background-color: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-button{
+  position: fixed;
+  right: 5%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 160px;
+  position: static;
+}
+
+.menu-toggle {
+  background-color: #000;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://www.produplant.tuboyaca.com/images/1.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-weight: 100px;
+  text-transform: uppercase;
+}
+
+.hero-icon {
+  margin: 20px 0;
+  font-size: 2rem;
+}
+
+.slide-indicators {
+  position: absolute;
+  left: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background-color: #8bc34a;
+}
+
+/* Welcome Section */
+.welcome {
+  padding: 50px 80px;
+  display: flex;
+  gap: 50px;
+}
+
+.welcome-content {
+  flex: 2;
+}
+
+.welcome-title {
+  color: #8bc34a;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.welcome-title:after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 3px;
+  background-color: #8bc34a;
+  bottom: -10px;
+  left: 0;
+}
+
+.company-name {
+  color: #8bc34a;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.company-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.welcome-image {
+  flex: 1;
+  display: flex;
+  position: relative;
+}
+
+.tree-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.stats {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: #8bc34a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.stat {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.stat-text {
+  font-size: 0.9rem;
+}
+
+.location {
+  position: absolute;
+  left: -70px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  color: #8bc34a;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.arrow-up {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.arrow-up svg {
+  fill: #8bc34a;
+  width: 20px;
+  height: 20px;
+}
+
+/* Semillas Section */
+.semillas {
+  height: 60vh;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("https://www.produplant.tuboyaca.com/video/3.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.semillas-title {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.semillas-logo {
+  width: 150px;
+  margin-top: 20px;
+}
+
+/* Servicios Section */
+.servicios {
+  padding: 80px 50px;
+  text-align: center;
+}
+
+.servicios-title {
+  font-size: 3rem;
+  margin-bottom: 80px;
+  position: relative;
+  display: inline-block;
+}
+
+.servicios-title:first-letter {
+  color: #8bc34a;
+}
+
+.servicios-title:after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 3px;
+  background-color: #8bc34a;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.servicios-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.servicio {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.servicio-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.servicio-icon.produccion {
+  border-color: #2196f3;
+}
+
+.servicio-icon.venta {
+  border-color: #ff4081;
+}
+
+.servicio-icon.asesoramiento {
+  border-color: #ffc107;
+}
+
+.servicio-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.produccion svg {
+  fill: #2196f3;
+}
+
+.venta svg {
+  fill: #ff4081;
+}
+
+.asesoramiento svg {
+  fill: #ffc107;
+}
+
+.servicio-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+
+.servicio-desc {
+  color: #777;
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+.chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+
+.chat-button img {
+  width: 30px;
+  height: 30px;
+}
+
+/* .chat-window {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: none;
+  flex-direction: column;
+  z-index: 999;
+  font-family: "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+} */
+
+.chat-window {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 400px;
+  height: 400px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: none;
+  flex-direction: column;
+  z-index: 999;
+  font-family: "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+/* .chat-header {
+  background-color: #25d366;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-weight: bold;
+  flex: 0 0 auto;  
+} */
+
+.chat-header {
+  background-color: #25d366;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* .chat-body {
+  padding: 10px;
+  max-height: 500px;
+  overflow-y: auto;
+  font-size: 14px;
+  min-height: 82%;
+} */
+
+
+.chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+  background: #f7f7f7;
+}
+
+.bot-message {
+  background: #e5e5ea;
+  padding: 8px 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+/* .chat-footer {
+  display: flex;
+  border-top: 1px solid #ddd;
+  bottom: 0;
+
+  padding: 6px;
+  flex: 0 0 auto;
+} */
+
+
+.chat-footer {
+  display: flex;
+  flex-shrink: 0;
+  border-top: 1px solid #ddd;
+  padding: 6px;
+  background: #fff;
+}
+/* #chatInput {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  border-bottom-left-radius: 10px;
+} */
+
+#chatInput {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+#imageInput {
+  margin-left: 4px;
+}
+/* 
+#sendBtn {
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+} */
+#sendBtn {
+  flex: 0 0 auto;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
