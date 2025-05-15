@@ -9,7 +9,7 @@ const previewImage = document.getElementById("previewImage");
 const removeImage = document.getElementById("removeImage");
 
 
-const API_URL = "https://fea0-34-10-70-112.ngrok-free.app/conversar";
+const API_URL = "https://3cdc-34-59-62-126.ngrok-free.app/conversar";
 
 chatToggle.addEventListener("click", () => {
   chatWindow.style.display =
