@@ -418,19 +418,48 @@ body {
 
 
 .chat-body {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   overflow-y: auto;
   font-size: 14px;
   background: #f7f7f7;
+  flex: 1;
+}
+
+.bot-message, .user-message {
+  padding: 8px 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+  max-width: 70%;
+  word-wrap: break-word;      /* Para que las palabras largas se dividan */
+  word-break: break-word;     /* Cortar si no hay espacios */
+  overflow-wrap: break-word;  /* Compatibilidad adicional */
+  white-space: pre-wrap;      /* Mantiene saltos de línea y permite ajustar */
 }
 
 .bot-message {
   background: #e5e5ea;
-  padding: 8px 10px;
-  border-radius: 10px;
-  margin-bottom: 5px;
+  align-self: flex-start;
+  border-top-left-radius: 0;
 }
+
+.user-message {
+  background: #71f5a1;
+  align-self: flex-end;
+  border-top-right-radius: 0;
+}
+
+.bot-message img,
+.user-message img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 5px;
+  display: block;
+}
+
 
 /* .chat-footer {
   display: flex;
@@ -441,14 +470,6 @@ body {
   flex: 0 0 auto;
 } */
 
-
-.chat-footer {
-  display: flex;
-  flex-shrink: 0;
-  border-top: 1px solid #ddd;
-  padding: 6px;
-  background: #fff;
-}
 /* #chatInput {
   flex: 1;
   border: none;
@@ -456,6 +477,34 @@ body {
   border-bottom-left-radius: 10px;
 } */
 
+.chat-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #ddd;
+  padding: 6px;
+  background: #fff;
+  position: relative;
+}
+
+/* Ocultar el input real de archivo */
+#imageInput {
+  display: none;
+}
+
+/* Icono personalizado */
+.upload-icon {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  user-select: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #666;
+}
+
+/* Input de texto */
 #chatInput {
   flex: 1;
   border: 1px solid #ccc;
@@ -463,9 +512,33 @@ body {
   padding: 6px 8px;
   font-size: 14px;
 }
-#imageInput {
-  margin-left: 4px;
+
+/* Imagen en miniatura */
+.image-preview {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
+
+.image-preview img {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+
+.remove-image {
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+
 /* 
 #sendBtn {
   background: #25d366;
@@ -475,6 +548,7 @@ body {
   border-bottom-right-radius: 10px;
   cursor: pointer;
 } */
+
 #sendBtn {
   flex: 0 0 auto;
   background: #25d366;
