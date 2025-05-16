@@ -22,7 +22,7 @@ body {
   align-items: center;
 }
 
-.menu-button{
+.menu-button {
   position: fixed;
   right: 5%;
 }
@@ -55,7 +55,8 @@ body {
   height: 100vh;
   width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://www.produplant.tuboyaca.com/images/1.jpg") center/cover no-repeat;
+    url("https://www.produplant.tuboyaca.com/images/1.jpg") center/cover
+      no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,7 +220,8 @@ body {
   height: 60vh;
   width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("https://www.produplant.tuboyaca.com/video/3.jpg") center/cover no-repeat;
+    url("https://www.produplant.tuboyaca.com/video/3.jpg") center/cover
+      no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -351,7 +353,6 @@ body {
   z-index: 1000;
 }
 
-
 .chat-button img {
   width: 30px;
   height: 30px;
@@ -416,7 +417,6 @@ body {
   min-height: 82%;
 } */
 
-
 .chat-body {
   display: flex;
   flex-direction: column;
@@ -427,16 +427,17 @@ body {
   flex: 1;
 }
 
-.bot-message, .user-message {
+.bot-message,
+.user-message {
   padding: 8px 10px;
   border-radius: 10px;
   margin-bottom: 5px;
   display: inline-block;
   max-width: 70%;
-  word-wrap: break-word;      /* Para que las palabras largas se dividan */
-  word-break: break-word;     /* Cortar si no hay espacios */
-  overflow-wrap: break-word;  /* Compatibilidad adicional */
-  white-space: pre-wrap;      /* Mantiene saltos de línea y permite ajustar */
+  word-wrap: break-word; /* Para que las palabras largas se dividan */
+  word-break: break-word; /* Cortar si no hay espacios */
+  overflow-wrap: break-word; /* Compatibilidad adicional */
+  white-space: pre-wrap; /* Mantiene saltos de línea y permite ajustar */
 }
 
 .bot-message {
@@ -459,7 +460,6 @@ body {
   margin-top: 5px;
   display: block;
 }
-
 
 /* .chat-footer {
   display: flex;
@@ -515,16 +515,16 @@ body {
 
 /* Imagen en miniatura */
 .image-preview {
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: center;
+  bottom: 14%;
 }
 
 .image-preview img {
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 6rem;
+  max-height: 6rem;
   border-radius: 4px;
-  margin-right: 4px;
 }
 
 .remove-image {
@@ -538,6 +538,10 @@ body {
   display: none;
 }
 
+.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
 
 /* 
 #sendBtn {
@@ -550,11 +554,11 @@ body {
 } */
 
 #sendBtn {
-  flex: 0 0 auto;
   background: #25d366;
   color: #fff;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
   cursor: pointer;
+  font-size: 1.8rem;
+  display: inline-block;
+  line-height: 1;
+  border-radius: 50%;
 }

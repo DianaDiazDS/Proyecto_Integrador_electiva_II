@@ -8,8 +8,20 @@ const previewContainer = document.getElementById("previewContainer");
 const previewImage = document.getElementById("previewImage");
 const removeImage = document.getElementById("removeImage");
 
-
 const API_URL = "https://3cdc-34-59-62-126.ngrok-free.app/conversar";
+
+chatInput.addEventListener("change", () => {
+  const mensaje = chatInput.value.trim();
+  const imagen = imageInput.files[0];
+
+  if (!mensaje || !imagen) {
+    sendBtn.setAttribute("disabled", "true");
+    sendBtn.classList.add("disabled");
+  } else {
+    sendBtn.removeAttribute("disabled");
+    sendBtn.classList.remove("disabled");
+  }
+});
 
 chatToggle.addEventListener("click", () => {
   chatWindow.style.display =
@@ -30,6 +42,7 @@ imageInput.addEventListener("change", () => {
 
 function cleanInputs() {
   imageInput.value = null;
+  chatInput.value = "";
   previewImage.src = "";
   previewContainer.classList.add("hidden");
 }
@@ -42,23 +55,25 @@ const requestBotAnswer = async () => {
   const mensaje = chatInput.value.trim();
   const imagen = imageInput.files[0];
 
-  if (!mensaje && !imagen) {
-    // alert("Debes escribir un mensaje o seleccionar una imagen.");
-    return;
-  }
+  sendBtn.removeAttribute("disabled");
+  sendBtn.classList.remove("disabled");
 
   const formData = new FormData();
   formData.append("mensaje", mensaje);
   if (imagen) formData.append("imagen", imagen);
 
-  // Mostrar mensaje del usuario
-  const userMsg = document.createElement("div");
-  userMsg.className = "user-message";
-  userMsg.textContent = mensaje;
-  chatBody.appendChild(userMsg);
-  chatBody.scrollTop = chatBody.scrollHeight;
+  if (mensaje) {
+    sendBtn.removeAttribute("disabled");
+    // Mostrar mensaje del usuario
+    const userMsg = document.createElement("div");
+    userMsg.className = "user-message";
+    userMsg.textContent = mensaje;
+    chatBody.appendChild(userMsg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
 
   if (imagen) {
+    sendBtn.removeAttribute("disabled");
     const reader = new FileReader();
     reader.onload = function (e) {
       const img = document.createElement("img");
@@ -66,11 +81,11 @@ const requestBotAnswer = async () => {
       img.src = e.target.result;
       img.style.maxWidth = "200px";
       img.style.marginTop = "5px";
+      img.style.borderRadius = "10px";
       chatBody.appendChild(img);
       chatBody.scrollTop = chatBody.scrollHeight;
     };
     reader.readAsDataURL(imagen);
-    cleanInputs();
   }
 
   try {
@@ -87,10 +102,14 @@ const requestBotAnswer = async () => {
     chatBody.appendChild(botMsg);
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    if (data.prediccion !== undefined && data.prediccion !== null && data.prediccion !== "") {
+    if (
+      data.prediccion !== undefined &&
+      data.prediccion !== null &&
+      data.prediccion !== ""
+    ) {
       const predbotMsg = document.createElement("div");
       predbotMsg.className = "bot-message";
-      predbotMsg.textContent = data.prediccion || "No hay predicción.";
+      predbotMsg.textContent = data.prediccion;
       chatBody.appendChild(predbotMsg);
       chatBody.scrollTop = chatBody.scrollHeight;
     }
@@ -98,8 +117,7 @@ const requestBotAnswer = async () => {
     console.error("Error:", error);
   }
 
-  chatInput.value = "";
-  imageInput.value = null;
+  cleanInputs();
 };
 
 sendBtn.addEventListener("click", requestBotAnswer);
@@ -108,5 +126,6 @@ chatInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     requestBotAnswer();
+    cleanInputs();
   }
 });
