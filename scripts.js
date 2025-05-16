@@ -7,26 +7,27 @@ const imageInput = document.getElementById("imageInput");
 const previewContainer = document.getElementById("previewContainer");
 const previewImage = document.getElementById("previewImage");
 const removeImage = document.getElementById("removeImage");
+const sendBtnWapper = document.getElementById("sendBtnWapper");
 
 const API_URL = "https://3cdc-34-59-62-126.ngrok-free.app/conversar";
-
-chatInput.addEventListener("change", () => {
-  const mensaje = chatInput.value.trim();
-  const imagen = imageInput.files[0];
-
-  if (!mensaje || !imagen) {
-    sendBtn.setAttribute("disabled", "true");
-    sendBtn.classList.add("disabled");
-  } else {
-    sendBtn.removeAttribute("disabled");
-    sendBtn.classList.remove("disabled");
-  }
-});
 
 chatToggle.addEventListener("click", () => {
   chatWindow.style.display =
     chatWindow.style.display === "flex" ? "none" : "flex";
 });
+
+const toggleSendButton = () => {
+  const mensaje = chatInput.value.trim();
+  const imagen = imageInput.files[0];
+
+  if (mensaje || imagen) {
+    sendBtnWapper.style.display = "flex";
+  } else {
+    sendBtnWapper.style.display = "none";
+  }
+};
+
+chatInput.addEventListener("input", toggleSendButton);
 
 imageInput.addEventListener("change", () => {
   const file = imageInput.files[0];
@@ -38,6 +39,7 @@ imageInput.addEventListener("change", () => {
     };
     reader.readAsDataURL(file);
   }
+  toggleSendButton();
 });
 
 function cleanInputs() {
@@ -45,6 +47,7 @@ function cleanInputs() {
   chatInput.value = "";
   previewImage.src = "";
   previewContainer.classList.add("hidden");
+  sendBtnWapper.style.display = "none";
 }
 
 removeImage.addEventListener("click", () => {
@@ -55,16 +58,14 @@ const requestBotAnswer = async () => {
   const mensaje = chatInput.value.trim();
   const imagen = imageInput.files[0];
 
-  sendBtn.removeAttribute("disabled");
-  sendBtn.classList.remove("disabled");
-
   const formData = new FormData();
-  formData.append("mensaje", mensaje);
+  mensaje
+    ? formData.append("mensaje", mensaje)
+    : formData.append("mensaje", "Analiza esta imagen");
   if (imagen) formData.append("imagen", imagen);
 
+  // Mostrar mensaje del usuario
   if (mensaje) {
-    sendBtn.removeAttribute("disabled");
-    // Mostrar mensaje del usuario
     const userMsg = document.createElement("div");
     userMsg.className = "user-message";
     userMsg.textContent = mensaje;
@@ -72,8 +73,8 @@ const requestBotAnswer = async () => {
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 
+  // Mostrar la imagen del usuario
   if (imagen) {
-    sendBtn.removeAttribute("disabled");
     const reader = new FileReader();
     reader.onload = function (e) {
       const img = document.createElement("img");
@@ -81,12 +82,13 @@ const requestBotAnswer = async () => {
       img.src = e.target.result;
       img.style.maxWidth = "200px";
       img.style.marginTop = "5px";
-      img.style.borderRadius = "10px";
       chatBody.appendChild(img);
       chatBody.scrollTop = chatBody.scrollHeight;
     };
     reader.readAsDataURL(imagen);
   }
+
+  cleanInputs();
 
   try {
     const res = await fetch(API_URL, {
@@ -116,8 +118,6 @@ const requestBotAnswer = async () => {
   } catch (error) {
     console.error("Error:", error);
   }
-
-  cleanInputs();
 };
 
 sendBtn.addEventListener("click", requestBotAnswer);
@@ -126,6 +126,5 @@ chatInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     requestBotAnswer();
-    cleanInputs();
   }
 });
