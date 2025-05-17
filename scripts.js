@@ -62,7 +62,7 @@ const requestBotAnswer = async () => {
   const formData = new FormData();
   mensaje
     ? formData.append("mensaje", mensaje)
-    : formData.append("mensaje", "Planta analisis key");
+    : formData.append("mensaje", "¿Esta planta está enferma?");
   if (imagen) formData.append("imagen", imagen);
 
   // Mostrar mensaje del usuario
