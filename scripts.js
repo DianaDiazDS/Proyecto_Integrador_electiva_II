@@ -9,7 +9,8 @@ const previewImage = document.getElementById("previewImage");
 const removeImage = document.getElementById("removeImage");
 const sendBtnWapper = document.getElementById("sendBtnWapper");
 
-const API_URL = "https://3cdc-34-59-62-126.ngrok-free.app/conversar";
+const API_URL =
+  "https://back-proyecto-integrador-electiva-ii-405838766703.europe-west1.run.app/conversar";
 
 chatToggle.addEventListener("click", () => {
   chatWindow.style.display =
@@ -61,7 +62,7 @@ const requestBotAnswer = async () => {
   const formData = new FormData();
   mensaje
     ? formData.append("mensaje", mensaje)
-    : formData.append("mensaje", "Analiza esta imagen");
+    : formData.append("mensaje", "Planta analisis key");
   if (imagen) formData.append("imagen", imagen);
 
   // Mostrar mensaje del usuario
@@ -111,7 +112,8 @@ const requestBotAnswer = async () => {
     ) {
       const predbotMsg = document.createElement("div");
       predbotMsg.className = "bot-message";
-      predbotMsg.textContent = data.prediccion;
+      predbotMsg.textContent =
+        "La enfermedad que tiene la planta es: " + data.prediccion;
       chatBody.appendChild(predbotMsg);
       chatBody.scrollTop = chatBody.scrollHeight;
     }
