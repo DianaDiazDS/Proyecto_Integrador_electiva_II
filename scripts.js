@@ -97,6 +97,7 @@ const requestBotAnswer = async () => {
       body: formData,
     });
     const data = await res.json();
+    console.log(data)
 
     // Mostrar respuesta del bot
     const botMsg = document.createElement("div");
