@@ -10,7 +10,7 @@ const removeImage = document.getElementById("removeImage");
 const sendBtnWapper = document.getElementById("sendBtnWapper");
 
 const API_URL =
-  "https://back-proyecto-integrador-electiva-ii-850197342974.us-central1.run.app";
+  "https://back-ml.up.railway.app/conversar";
 
 chatToggle.addEventListener("click", () => {
   chatWindow.style.display =
@@ -97,8 +97,8 @@ const requestBotAnswer = async () => {
       body: formData,
     });
     const data = await res.json();
-    console.log(data)
-
+    console.log(data);
+    
     // Mostrar respuesta del bot
     const botMsg = document.createElement("div");
     botMsg.className = "bot-message";
