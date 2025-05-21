@@ -10,7 +10,7 @@ const removeImage = document.getElementById("removeImage");
 const sendBtnWapper = document.getElementById("sendBtnWapper");
 
 const API_URL =
-  "https://back-machine-learning.uc.r.appspot.com/conversar";
+  "https://back-proyecto-integrador-electiva-ii-850197342974.us-central1.run.app/conversar";
 
 chatToggle.addEventListener("click", () => {
   chatWindow.style.display =
@@ -97,8 +97,7 @@ const requestBotAnswer = async () => {
       body: formData,
     });
     const data = await res.json();
-    console.log(data);
-    
+
     // Mostrar respuesta del bot
     const botMsg = document.createElement("div");
     botMsg.className = "bot-message";
