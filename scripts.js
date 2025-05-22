@@ -10,7 +10,7 @@ const removeImage = document.getElementById("removeImage");
 const sendBtnWapper = document.getElementById("sendBtnWapper");
 
 const API_URL =
-  "https://back-proyecto-integrador-electiva-ii-850197342974.us-central1.run.app/conversar";
+  "https://back-proyecto-integrador-electiva-ii-850197342974.europe-west1.run.app/conversar";
 
 chatToggle.addEventListener("click", () => {
   chatWindow.style.display =
